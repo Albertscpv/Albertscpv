@@ -1,16 +1,18 @@
-### Hi there 👋
+
+
+### Hi there I'm albertDev and Welcome to my devWorld 👋.
+<p align="center">
+  <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=%green&size=25&center=true&vCenter=true&width=600&height=100&lines=Software+Engineer+@AlbertDev;Web+Developer+Student;Oracle+Next+Education=Student;2x+ACPC+Finalist;Begginer+in+UX+UI;Always+learning+new+things"></a>
+</p>
 
 <!--
 **Albertscpv/Albertscpv** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
 -->
+- 🌱 I’m currently learning by my self in Oracle Next Education. <br>
+- 👯 I’m looking to collaborate on everyproyect related with technology.<br>
+- 🤔 I’m looking for help with deployment servers.<br>
+- 💬 Ask me about everything that you want<br>
+  <a href="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white">Discord</a><br>
+- ⚡ Fun fact: ...<br>
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
+
