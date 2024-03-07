@@ -12,7 +12,6 @@
 - 👯 I’m looking to collaborate on everyproyect related with technology.<br>
 - 🤔 I’m looking for help with deployment servers.<br>
 - 💬 Ask me about everything that you want<br>
-- ⚡ Fun fact: ...<br>
 
 [![My Skills](https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
 <h3 align="left">Languages and Tools:</h3>
