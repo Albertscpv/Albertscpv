@@ -8,8 +8,8 @@
 <!--
 **Albertscpv/Albertscpv** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 -->
-- 🌱 I’m currently learning by my self in Oracle Next Education. <br>
-- 👯 I’m looking to collaborate on everyproyect related with technology.<br>
+- 🌱 I’m currently studying in Oracle Next Education. <br>
+- 👯 I’m looking to collaborate on every proyect related with technology.<br>
 - 🤔 I’m looking for help with deployment servers.<br>
 - 💬 Ask me about everything that you want<br>
 <h3 align="left">Languages and Tools:</h3>
