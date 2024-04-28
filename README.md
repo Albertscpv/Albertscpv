@@ -8,6 +8,13 @@
 <!--
 **Albertscpv/Albertscpv** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 -->
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=albertscpv&radius=16&theme=react&area=true&order=5" height="300" alt="activity-graph graph"  />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=albertscpv&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false&order=2" height="150" alt="languages graph"  />
+  <img src="https://streak-stats.demolab.com?user=albertscpv&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5&order=3" height="150" alt="streak graph"  />
+</div>
+
+###
 - 🌱 I’m currently studying in Oracle Next Education. <br>
 - 👯 I’m looking to collaborate on every proyect related with technology.<br>
 - 🤔 I’m looking for help with deployment servers.<br>
