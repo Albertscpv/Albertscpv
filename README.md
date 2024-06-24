@@ -1,5 +1,3 @@
-![ProfileBanner](https://github.com/Albertscpv/ImgsPortflio/blob/d0d8440f7bf10623bb367060ebc820d6aa85601f/assets/ProfilePic.png)
-
 <h1 align="center">Hi 👋,  I'm Christopher Monge</h1>
 <p align="center">
   <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=%green&size=25&center=true&vCenter=true&width=600&height=100&lines=Developer+@AlbertDev;Web+Developer;Oracle+Next+Education+Student;Begginer+in+UX+UI;Always+learning+new+things"></a>
