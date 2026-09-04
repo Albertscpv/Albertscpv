@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #
-# Downloads the profile cards once, at build time, and stores them under
-# assets/ so the README can serve them from this repository instead of
-# fetching them from third-party services on every page view.
+# Downloads the cards that come from third-party services once, at build
+# time, and stores them under assets/ so the README serves them from this
+# repository instead of fetching them on every page view.
 #
-# GitHub proxies README images through Camo, which has a short upstream
-# timeout and caches failures. The cards that query the GitHub API are slow
-# enough to trip it, which is why they rendered as broken images.
+# Only the two services that still answer are listed here. The stats,
+# language and activity cards are rendered by generate-cards.py instead,
+# after github-readme-stats began answering 503 and the activity graph
+# began answering 402.
 #
 # A card is only written when the download both succeeds and looks like a
 # real card, so a bad response never overwrites a good committed copy.
@@ -51,8 +52,8 @@ fetch_card() {
   local name=$1 url=$2 tmp status
   tmp=$(mktemp)
 
-  for attempt in 1 2 3 4 5; do
-    status=$(curl -sSL --max-time 45 --compressed \
+  for attempt in 1 2 3; do
+    status=$(curl -sSL --max-time 20 --compressed \
                   -H 'Accept: image/svg+xml' \
                   -w '%{http_code}' -o "$tmp" "$url" 2>/dev/null)
 
@@ -62,8 +63,8 @@ fetch_card() {
       return 0
     fi
 
-    echo "  attempt $attempt/5 failed for $name (HTTP ${status:-000})"
-    [ "$attempt" -lt 5 ] && sleep $((attempt * 5))
+    echo "  attempt $attempt/3 failed for $name (HTTP ${status:-000})"
+    [ "$attempt" -lt 3 ] && sleep $((attempt * 3))
   done
 
   rm -f "$tmp"
@@ -77,10 +78,7 @@ fetch_card() {
 }
 
 cards=(
-  "stats|https://github-readme-stats.vercel.app/api?username=${USER}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=7aa2f7&icon_color=bb9af7&text_color=a9b1d6&card_width=420"
-  "top-langs|https://github-readme-stats.vercel.app/api/top-langs?username=${USER}&layout=compact&langs_count=6&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=7aa2f7&text_color=a9b1d6&card_width=320"
   "streak|https://streak-stats.demolab.com?user=${USER}&theme=tokyonight&hide_border=true&background=1a1b27&ring=7aa2f7&fire=bb9af7&currStreakLabel=7aa2f7"
-  "activity|https://github-readme-activity-graph.vercel.app/graph?username=${USER}&theme=tokyo-night&bg_color=1a1b27&color=a9b1d6&line=7aa2f7&point=bb9af7&hide_border=true&radius=8&area=true"
   "followers|https://img.shields.io/github/followers/${USER}?label=Followers&style=flat-square&color=bb9af7&labelColor=1a1b27"
 )
 

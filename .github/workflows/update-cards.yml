@@ -15,6 +15,7 @@ on:
     paths:
       - '.github/workflows/update-cards.yml'
       - 'scripts/fetch-cards.sh'
+      - 'scripts/generate-cards.py'
 
 permissions:
   contents: write
@@ -32,18 +33,28 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Render cards from the GitHub API
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_USER: albertscpv
+        run: ./scripts/generate-cards.py
+
       - name: Download cards
         run: ./scripts/fetch-cards.sh
 
       - name: Commit refreshed cards
         run: |
-          if git diff --quiet -- assets; then
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          # Stage first: a newly downloaded card is untracked, and `git diff`
+          # alone does not report untracked files.
+          git add -A assets
+
+          if git diff --cached --quiet; then
             echo "Cards are unchanged; nothing to commit."
             exit 0
           fi
 
-          git config user.name  'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets
           git commit -m 'chore: refresh profile README cards'
           git push
