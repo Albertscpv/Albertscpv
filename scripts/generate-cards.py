@@ -45,7 +45,7 @@ query($login: String!) {
       totalIssueContributions
       contributionCalendar {
         totalContributions
-        weeks { contributionDays { date contributionCount } }
+        weeks { contributionDays { date weekday contributionCount } }
       }
     }
     repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
@@ -88,7 +88,7 @@ def mock():
         days = []
         for day in range(7):
             index = week * 7 + day
-            days.append({"date": f"2026-01-{index % 28 + 1:02d}",
+            days.append({"date": f"2026-01-{index % 28 + 1:02d}", "weekday": day,
                          "contributionCount": (index * 7) % 11})
         weeks.append({"contributionDays": days})
     return {
@@ -132,13 +132,15 @@ viewBox="0 0 {width} {height}" fill="none" role="img" aria-label="{esc(title)}">
 def stats_card(user):
     stars = sum(repo["stargazerCount"] for repo in user["repositories"]["nodes"])
     contributions = user["contributionsCollection"]
+    # contributionsCollection defaults to the last twelve months, not the
+    # calendar year, so those three rows say so rather than reading as totals.
     rows = [
-        ("Total Stars Earned", stars),
-        (f"Total Commits ({datetime.utcnow().year})", contributions["totalCommitContributions"]),
-        ("Total PRs", contributions["totalPullRequestContributions"]),
-        ("Total Issues", contributions["totalIssueContributions"]),
         ("Public Repositories", user["repositories"]["totalCount"]),
+        ("Total Stars Earned", stars),
         ("Followers", user["followers"]["totalCount"]),
+        ("Commits (12 mo)", contributions["totalCommitContributions"]),
+        ("Pull Requests (12 mo)", contributions["totalPullRequestContributions"]),
+        ("Issues (12 mo)", contributions["totalIssueContributions"]),
     ]
 
     width, y = 420, 72
@@ -151,8 +153,9 @@ def stats_card(user):
         )
         y += 26
 
-    name = user.get("name") or "GitHub"
-    return frame(width, y - 12, f"{name}'s GitHub Stats", "\n".join(body))
+    # The README already carries the name above this card; repeating the
+    # profile's `name` field here only invited the two to disagree.
+    return frame(width, y - 12, "GitHub Stats", "\n".join(body))
 
 
 def languages_card(user, count=6):
@@ -196,57 +199,70 @@ def languages_card(user, count=6):
 
 
 def activity_card(user):
-    days = [day
-            for week in user["contributionsCollection"]["contributionCalendar"]["weeks"]
-            for day in week["contributionDays"]]
-    counts = [day["contributionCount"] for day in days] or [0]
-    peak = max(counts) or 1
+    """Contribution calendar, drawn as a heatmap.
 
-    width, height = 840, 240
-    left, right, top, bottom = 45, 25, 60, 45
-    plot_w, plot_h = width - left - right, height - top - bottom
+    A line chart is a poor fit here: across a year of a few dozen sparse
+    contributions it is a flat line with isolated spikes. The calendar grid
+    stays readable at any volume, and it is the shape the data already has.
+    """
+    calendar = user["contributionsCollection"]["contributionCalendar"]
+    weeks = calendar["weeks"]
+    peak = max((day["contributionCount"] for week in weeks
+                for day in week["contributionDays"]), default=0)
 
-    step = plot_w / max(len(counts) - 1, 1)
-    points = [(left + index * step, top + plot_h - (count / peak) * plot_h)
-              for index, count in enumerate(counts)]
-    line = " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
-    area = f"{left},{top + plot_h} {line} {left + plot_w:.1f},{top + plot_h}"
+    # Empty, then four steps. Anything above zero gets a visible cell, so a
+    # single contribution never disappears into the background.
+    levels = ["#1f2335", "#283457", "#3d59a1", "#7aa2f7", "#bb9af7"]
 
-    body = [
-        f'  <defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">'
-        f'<stop offset="0%" stop-color="{TITLE}" stop-opacity="0.45"/>'
-        f'<stop offset="100%" stop-color="{TITLE}" stop-opacity="0"/></linearGradient></defs>',
-        f'  <polygon points="{area}" fill="url(#fade)"/>',
-        f'  <polyline points="{line}" fill="none" stroke="{TITLE}" stroke-width="2" '
-        f'stroke-linejoin="round" stroke-linecap="round"/>',
-    ]
+    def shade(count):
+        if count <= 0:
+            return levels[0]
+        return levels[min(4, 1 + int(3 * (count - 1) / max(peak - 1, 1)))]
 
-    # Horizontal guides, labelled with the contribution count they sit at.
-    for fraction in (0, 0.5, 1):
-        y = top + plot_h - fraction * plot_h
-        body.append(
-            f'  <line x1="{left}" y1="{y:.1f}" x2="{left + plot_w}" y2="{y:.1f}" '
-            f'stroke="{MUTED}" stroke-width="1" stroke-opacity="0.35"/>\n'
-            f'  <text x="{left - 10}" y="{y + 4:.1f}" fill="{MUTED}" font-family="{FONT}" '
-            f'font-size="11" text-anchor="end">{round(peak * fraction)}</text>'
-        )
+    cell, gap = 11, 3
+    pitch = cell + gap
+    left, top = 42, 78
+    width = left + len(weeks) * pitch + 20
+    height = top + 7 * pitch + 20
 
-    # One label per month, placed at the first day of each month we hold.
+    body = []
+    for column, week in enumerate(weeks):
+        x = left + column * pitch
+        for day in week["contributionDays"]:
+            y = top + day["weekday"] * pitch
+            body.append(f'  <rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" '
+                        f'fill="{shade(day["contributionCount"])}">'
+                        f'<title>{day["date"]}: {day["contributionCount"]}</title></rect>')
+
+    for row, label in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
+        y = top + row * pitch + cell - 1
+        body.append(f'  <text x="{left - 8}" y="{y}" fill="{MUTED}" font-family="{FONT}" '
+                    f'font-size="10" text-anchor="end">{label}</text>')
+
     seen = set()
-    for index, day in enumerate(days):
-        month = day["date"][:7]
+    for column, week in enumerate(weeks):
+        month = week["contributionDays"][0]["date"][:7]
         if month in seen:
             continue
         seen.add(month)
-        x = left + index * step
-        if x > left + plot_w - 20:
+        x = left + column * pitch
+        if x > width - 45:
             continue
-        label = datetime.strptime(day["date"], "%Y-%m-%d").strftime("%b")
-        body.append(f'  <text x="{x:.1f}" y="{height - 18}" fill="{MUTED}" font-family="{FONT}" '
-                    f'font-size="11" text-anchor="middle">{label}</text>')
+        label = datetime.strptime(week["contributionDays"][0]["date"], "%Y-%m-%d").strftime("%b")
+        body.append(f'  <text x="{x}" y="{top - 10}" fill="{MUTED}" font-family="{FONT}" '
+                    f'font-size="10">{label}</text>')
 
-    total = user["contributionsCollection"]["contributionCalendar"]["totalContributions"]
-    body.append(f'  <text x="{width - 25}" y="37" fill="{MUTED}" font-family="{FONT}" '
+    legend_x = width - 20 - 5 * pitch - 30
+    body.append(f'  <text x="{legend_x - 6}" y="{height - 12}" fill="{MUTED}" '
+                f'font-family="{FONT}" font-size="10" text-anchor="end">Less</text>')
+    for index, colour in enumerate(levels):
+        body.append(f'  <rect x="{legend_x + index * pitch}" y="{height - 21}" width="{cell}" '
+                    f'height="{cell}" rx="2" fill="{colour}"/>')
+    body.append(f'  <text x="{legend_x + 5 * pitch + 4}" y="{height - 12}" fill="{MUTED}" '
+                f'font-family="{FONT}" font-size="10">More</text>')
+
+    total = calendar["totalContributions"]
+    body.append(f'  <text x="{width - 20}" y="37" fill="{MUTED}" font-family="{FONT}" '
                 f'font-size="13" text-anchor="end">{total:,} contributions in the last year</text>')
 
     return frame(width, height, "Contribution Activity", "\n".join(body))
