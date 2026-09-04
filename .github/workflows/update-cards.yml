@@ -1,0 +1,49 @@
+name: Update README cards
+
+on:
+  # Refresh the committed cards once a day.
+  schedule:
+    - cron: '17 4 * * *'
+  # Allow refreshing them on demand.
+  workflow_dispatch:
+  # Re-run whenever the fetching logic itself changes. The assets/ directory
+  # is deliberately not listed: the commit this job pushes must not retrigger
+  # it. (Pushes made with GITHUB_TOKEN do not start new runs either, so this
+  # is a second line of defence rather than the only one.)
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-cards.yml'
+      - 'scripts/fetch-cards.sh'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-cards
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Refresh profile cards
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Download cards
+        run: ./scripts/fetch-cards.sh
+
+      - name: Commit refreshed cards
+        run: |
+          if git diff --quiet -- assets; then
+            echo "Cards are unchanged; nothing to commit."
+            exit 0
+          fi
+
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets
+          git commit -m 'chore: refresh profile README cards'
+          git push
