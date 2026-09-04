@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="216" viewBox="0 0 420 216" fill="none" role="img" aria-label="Albert Dev's GitHub Stats">
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="216" viewBox="0 0 420 216" fill="none" role="img" aria-label="GitHub Stats">
   <rect width="420" height="216" rx="10" fill="#1a1b27"/>
-  <text x="25" y="37" fill="#7aa2f7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="17" font-weight="600">Albert Dev's GitHub Stats</text>
-  <text x="25" y="72" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Total Stars Earned</text>
-  <text x="395" y="72" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">2</text>
-  <text x="25" y="98" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Total Commits (2026)</text>
-  <text x="395" y="98" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">8</text>
-  <text x="25" y="124" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Total PRs</text>
-  <text x="395" y="124" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">5</text>
-  <text x="25" y="150" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Total Issues</text>
-  <text x="395" y="150" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">0</text>
-  <text x="25" y="176" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Public Repositories</text>
-  <text x="395" y="176" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">17</text>
-  <text x="25" y="202" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Followers</text>
+  <text x="25" y="37" fill="#7aa2f7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="17" font-weight="600">GitHub Stats</text>
+  <text x="25" y="72" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Public Repositories</text>
+  <text x="395" y="72" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">17</text>
+  <text x="25" y="98" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Total Stars Earned</text>
+  <text x="395" y="98" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">2</text>
+  <text x="25" y="124" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Followers</text>
+  <text x="395" y="124" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">0</text>
+  <text x="25" y="150" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Commits (12 mo)</text>
+  <text x="395" y="150" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">9</text>
+  <text x="25" y="176" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Pull Requests (12 mo)</text>
+  <text x="395" y="176" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">6</text>
+  <text x="25" y="202" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Issues (12 mo)</text>
   <text x="395" y="202" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">0</text>
 </svg>
