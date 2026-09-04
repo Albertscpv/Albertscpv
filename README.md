@@ -9,8 +9,8 @@
 
 <br/>
 
-<img src="https://komarev.com/ghpvc/?username=albertscpv&label=Profile%20views&color=7aa2f7&style=flat-square" alt="profile views" />
-<img src="https://img.shields.io/github/followers/albertscpv?label=Followers&style=flat-square&color=bb9af7&labelColor=1a1b27" alt="followers" />
+<img src="https://komarev.com/ghpvc/?username=albertscpv&label=Profile%20views&color=7aa2f7&style=flat-square" alt="Profile views" />
+<img src="https://img.shields.io/github/followers/albertscpv?label=Followers&style=flat-square&color=bb9af7&labelColor=1a1b27" alt="GitHub followers" />
 
 </div>
 
@@ -81,16 +81,16 @@ motto:     "Always learning new things"
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=albertscpv&show_icons=true&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=7aa2f7&icon_color=bb9af7&text_color=a9b1d6&card_width=420" alt="stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs?username=albertscpv&layout=compact&langs_count=6&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=7aa2f7&text_color=a9b1d6&card_width=320" alt="top languages" />
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=albertscpv&show_icons=true&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=7aa2f7&icon_color=bb9af7&text_color=a9b1d6&card_width=420&cache_seconds=86400" alt="Christopher Monge - GitHub stats" />
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs?username=albertscpv&layout=compact&langs_count=6&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=7aa2f7&text_color=a9b1d6&card_width=320&cache_seconds=86400" alt="Christopher Monge - most used languages" />
 
 <br/>
 
-<img height="165" src="https://streak-stats.demolab.com?user=albertscpv&theme=tokyonight&hide_border=true&background=1a1b27&ring=7aa2f7&fire=bb9af7&currStreakLabel=7aa2f7" alt="streak" />
+<img height="165" src="https://streak-stats.demolab.com?user=albertscpv&theme=tokyonight&hide_border=true&background=1a1b27&ring=7aa2f7&fire=bb9af7&currStreakLabel=7aa2f7" alt="Christopher Monge - contribution streak" />
 
 <br/><br/>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=albertscpv&theme=tokyo-night&bg_color=1a1b27&color=a9b1d6&line=7aa2f7&point=bb9af7&hide_border=true&radius=8&area=true" width="95%" alt="activity graph" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=albertscpv&theme=tokyo-night&bg_color=1a1b27&color=a9b1d6&line=7aa2f7&point=bb9af7&hide_border=true&radius=8&area=true" width="95%" alt="Christopher Monge - contribution activity" />
 
 </div>
 
