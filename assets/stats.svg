@@ -8,7 +8,7 @@
   <text x="25" y="124" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Followers</text>
   <text x="395" y="124" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">0</text>
   <text x="25" y="150" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Commits (12 mo)</text>
-  <text x="395" y="150" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">9</text>
+  <text x="395" y="150" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">6</text>
   <text x="25" y="176" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Pull Requests (12 mo)</text>
   <text x="395" y="176" fill="#bb9af7" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" font-weight="700" text-anchor="end">6</text>
   <text x="25" y="202" fill="#a9b1d6" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14">Issues (12 mo)</text>
